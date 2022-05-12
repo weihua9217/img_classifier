@@ -9,7 +9,7 @@ from valid import _valid
 import os
 def _train(model, args):
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    model.fc = nn.Linear(model.fc.in_features, 10)
+    model.fc = nn.Linear(model.fc.in_features, args.class_num)
     model.to(device)
     optimizer = optim.Adam(model.parameters(), lr=args.learning_rate)
     criterion = nn.CrossEntropyLoss()
@@ -60,6 +60,11 @@ def _train(model, args):
             torch.save({'model': model.state_dict(),
                         'optimizer': optimizer.state_dict(),
                         'epoch': epoch}, save_name)
+    # save the final weight
+    save_name = os.path.join(args.model_save_dir, 'final.pkl')
+    torch.save({'model': model.state_dict(),
+                'optimizer': optimizer.state_dict(),
+                'epoch': epoch}, save_name)
 
     print('Finished Training')
 
