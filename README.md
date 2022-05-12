@@ -3,6 +3,8 @@ pip install torch==1.10.0+cu102 torchvision==0.11.0+cu102 torchaudio==0.10.0 -f 
 
 pip install tensorboard==2.9.0
 
+pip install pandas
+
 # Fruit Classifier
 This is a Fruit Classifier, which backbone is ResNet
 
@@ -11,12 +13,12 @@ This is a Fruit Classifier, which backbone is ResNet
 ```
 python arrange.py
 ```
-## Step2. Train the ResNet:
+## Step2. Train:
 ```
 python main.py --mode "train" --batch_size 64 --data_dir "./dataset/"
 ```
 
-## Step3. To Test the result:
+## Step3. Test:
 ```
 python main.py --mode "test" --data_dir "./dataset/"
 ```
