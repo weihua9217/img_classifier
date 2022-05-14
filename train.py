@@ -53,7 +53,7 @@ def _train(model, args):
             val = _valid(model, args)
             print('(VAL) %03d epoch \n Accuracy %.2f /100' % (epoch, val))
             if val> best:
-                torch.save(model.state_dict(),"./results/0511/weights/best.pkl")
+                torch.save(model.state_dict(),"./results/"+ args.name +"/weights/best.pkl")
         
         if epoch % args.save_freq == 0:
             save_name = os.path.join(args.model_save_dir, 'model_%d.pkl'% epoch)
